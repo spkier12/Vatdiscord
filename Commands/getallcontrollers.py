@@ -4,7 +4,6 @@ import requests
 @vatbot.tree.command(
     name="getallcontrollers",
     description="get all controllers online in a given country",
-    # guild=vatbot.discord.Object(id=971816793704386630)
 )
 async def getallcontrollers(interaction: vatbot.discord.Interaction, icao: str):
     try:

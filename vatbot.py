@@ -1,3 +1,5 @@
+import os
+
 import discord
 from discord import app_commands
 
@@ -17,10 +19,13 @@ client = DiscordBot(intents=intents)
 tree = app_commands.CommandTree(client)
 treesynced = False
 
-from Commands import getflight, getcontrollers, getallcontrollers
+# Import all files in Commands direcotry
+for files in os.listdir('./Commands'):
+    if str(files).endswith('.py'):
+        print(f"\n Importing {files}")
+from Commands import *
 
 def startbot():
     client.run("MTI0OTM4Mjk4Njk5MTAwOTkzMw.GnvBhf._rkYibse4P7fRXh6_kly2LNKELuUxyUCTcqpzg")
 
 
-# guild=discord.Object(id=971816793704386630)

@@ -4,8 +4,6 @@ import requests
 @vatbot.tree.command(
     name='getcontrollers',
     description='Search for online atc by country code',
-    # guild=vatbot.discord.Object(id=971816793704386630)
-
 )
 async def getcontrollers(interaction: vatbot.discord.Interaction, icao: str):
     try:

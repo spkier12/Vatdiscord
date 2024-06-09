@@ -4,7 +4,6 @@ import requests
 @vatbot.tree.command(
     name="getflights",
     description="Find a flight by ID or name",
-    # guild=vatbot.discord.Object(id=971816793704386630)
 )
 async def getflights(interaction: vatbot.discord.Interaction, vname: str = "", vatid: int = 0, callsign: str = ""):
     try:
