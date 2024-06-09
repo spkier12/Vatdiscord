@@ -20,7 +20,7 @@ treesynced = False
 from Commands import getflight, getcontrollers, getallcontrollers
 
 def startbot():
-    client.run("OTgzMzYwNjkzOTYzMjE4OTQ1.GY6Aun.xvkt30YTDxueczecwiKzJvmHYmB_GWujMI3Itw")
+    client.run("MTI0OTM4Mjk4Njk5MTAwOTkzMw.GnvBhf._rkYibse4P7fRXh6_kly2LNKELuUxyUCTcqpzg")
 
 
 # guild=discord.Object(id=971816793704386630)

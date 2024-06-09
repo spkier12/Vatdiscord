@@ -20,7 +20,7 @@ async def getflights(interaction: vatbot.discord.Interaction, vname: str = "", v
 
         # Check if username is found or CID and return data and exit function
         for cid in pilots:
-            if cid['cid'] == vatid or cid['name'] == vname or cid['callsign'] == callsign:
+            if cid['cid'] == vatid or str(cid['name']).startswith(vname) or cid['callsign'] == callsign:
                 await interaction.response.send_message(embed=await sendvatsimembed(interaction, cid))
                 return
         await interaction.response.send_message(f"No flights was found by ID or name/callsign")
