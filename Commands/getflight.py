@@ -4,13 +4,13 @@ import requests
 @vatbot.tree.command(
     name="getflights",
     description="Find a flight by ID or name",
-    guild=vatbot.discord.Object(id=971816793704386630)
+    # guild=vatbot.discord.Object(id=971816793704386630)
 )
 async def getflights(interaction: vatbot.discord.Interaction, vname: str = "", vatid: int = 0, callsign: str = ""):
     try:
         # If Parameters are empty then exit function
         if vname == "" and vatid == 0 and callsign == "":
-            await interaction.channel.send("Name or CID cannot be empty, i can only check for either name or id")
+            await interaction.response.send_message("Name or CID cannot be empty, i can only check for either name or id")
             return
 
         # Fetch data from Vatism api and convert to json
@@ -21,9 +21,9 @@ async def getflights(interaction: vatbot.discord.Interaction, vname: str = "", v
         # Check if username is found or CID and return data and exit function
         for cid in pilots:
             if cid['cid'] == vatid or cid['name'] == vname or cid['callsign'] == callsign:
-                await interaction.channel.send(embed=await sendvatsimembed(interaction, cid))
+                await interaction.response.send_message(embed=await sendvatsimembed(interaction, cid))
                 return
-        await interaction.channel.send(f"No flights was found by ID or name/callsign")
+        await interaction.response.send_message(f"No flights was found by ID or name/callsign")
         return
 
     except Exception as err:

@@ -6,12 +6,9 @@ class DiscordBot(discord.Client):
         global treesynced
         print(f"\n Logged on as {self.user}")
         if not treesynced:
-            await tree.sync(guild=discord.Object(id=971816793704386630))
+            await tree.sync()
             print("\n Tree synced..")
             treesynced = True
-
-    async def on_message(self, message):
-        pass
 
 
 intents = discord.Intents.default()
@@ -20,8 +17,10 @@ client = DiscordBot(intents=intents)
 tree = app_commands.CommandTree(client)
 treesynced = False
 
-
-from Commands import getflight, getcontrollers
+from Commands import getflight, getcontrollers, getallcontrollers
 
 def startbot():
     client.run("OTgzMzYwNjkzOTYzMjE4OTQ1.GY6Aun.xvkt30YTDxueczecwiKzJvmHYmB_GWujMI3Itw")
+
+
+# guild=discord.Object(id=971816793704386630)

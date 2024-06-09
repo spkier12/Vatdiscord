@@ -4,13 +4,14 @@ import requests
 @vatbot.tree.command(
     name='getcontrollers',
     description='Search for online atc by country code',
-    guild=vatbot.discord.Object(id=971816793704386630)
+    # guild=vatbot.discord.Object(id=971816793704386630)
+
 )
 async def getcontrollers(interaction: vatbot.discord.Interaction, icao: str):
     try:
         # Check if icao isnt empty and contains atleast 2 chars
         if len(icao) < 2 or icao == "":
-            await interaction.channel.send("Icao cannot be empty or has to be atleast 2 chars in length")
+            await interaction.response.send_message("Icao cannot be empty or has to be atleast 2 chars in length")
             return
 
         # Fetch data from Vatism api and convert to json
@@ -20,12 +21,11 @@ async def getcontrollers(interaction: vatbot.discord.Interaction, icao: str):
 
         # Check if controller is found in list and return it
         for ctrls in controllers:
-            print(f"\n\n{ctrls}")
             if icao in str(ctrls['callsign']):
-                await interaction.channel.send(embed=await sendvatsimembed(interaction, ctrls))
+                await interaction.response.send_message(embed=await sendvatsimembed(interaction, ctrls))
                 return
 
-        await interaction.channel.send(f"No Controllers was found online with the given icao: {icao}")
+        await interaction.response.send_message(f"No Controllers was found online with the given icao: {icao}")
         return
 
     except Exception as e:
