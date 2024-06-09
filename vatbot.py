@@ -23,7 +23,12 @@ treesynced = False
 for files in os.listdir('./Commands'):
     if str(files).endswith('.py'):
         print(f"\n Importing {files}")
-from Commands import *
+
+from Commands import (
+    getflight,
+    getcontrollers,
+    getallcontrollers,
+    getmetar)
 
 def startbot():
     client.run("MTI0OTM4Mjk4Njk5MTAwOTkzMw.GnvBhf._rkYibse4P7fRXh6_kly2LNKELuUxyUCTcqpzg")
