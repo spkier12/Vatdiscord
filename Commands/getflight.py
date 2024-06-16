@@ -1,4 +1,5 @@
 import vatbot
+import settings
 import requests
 
 @vatbot.tree.command(
@@ -7,6 +8,10 @@ import requests
 )
 async def getflights(interaction: vatbot.discord.Interaction, vname: str = "", vatid: int = 0, callsign: str = ""):
     try:
+        # Check if commands are not disabled
+        if settings.getflight == False:
+            return
+        
         # If Parameters are empty then exit function
         if vname == "" and vatid == 0 and callsign == "":
             await interaction.response.send_message("Name or CID cannot be empty, i can only check for either name or id")

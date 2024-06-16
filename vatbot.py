@@ -1,5 +1,5 @@
 import os
-
+import settings
 import discord
 from discord import app_commands
 
@@ -31,6 +31,9 @@ from Commands import (
     getmetar)
 
 def startbot():
-    client.run("MTI0OTM4Mjk4Njk5MTAwOTkzMw.GnvBhf._rkYibse4P7fRXh6_kly2LNKELuUxyUCTcqpzg")
+    if settings.discordtoken == None:
+        print("/n Discord Token is invalid and dosnt contain anything except None.. Shuting down bot")
+        return
+    client.run(settings.discordtoken)
 
 
