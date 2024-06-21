@@ -1,4 +1,5 @@
 import vatbot
+import settings
 import requests
 
 @vatbot.tree.command(
@@ -7,6 +8,10 @@ import requests
 )
 async def getcontrollers(interaction: vatbot.discord.Interaction, icao: str):
     try:
+        # Check if commands are not disabled
+        if settings.getcontrollers == False:
+            return
+        
         # Check if icao isnt empty and contains atleast 2 chars
         if len(icao) < 2 or icao == "":
             await interaction.response.send_message("Icao cannot be empty or has to be atleast 2 chars in length")

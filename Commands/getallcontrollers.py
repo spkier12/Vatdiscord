@@ -1,4 +1,5 @@
 import vatbot
+import settings
 import requests
 
 @vatbot.tree.command(
@@ -7,6 +8,10 @@ import requests
 )
 async def getallcontrollers(interaction: vatbot.discord.Interaction, icao: str):
     try:
+        # Check if commands are not disabled
+        if settings.getallcontrollers == False:
+            return
+
         # Fetch data from Vatism api and convert to json
         url: str = "https://data.vatsim.net/v3/vatsim-data.json"
         res = requests.request("GET", url=url, headers={}, data={})
